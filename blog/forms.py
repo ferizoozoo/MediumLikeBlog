@@ -6,3 +6,8 @@ class PartialCommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ['content']
+
+class PartialPostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content']
