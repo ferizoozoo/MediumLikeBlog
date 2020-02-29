@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+    <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'blog/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/jquery-ui.css' %}">
+
+    <link rel="stylesheet" href="{% static 'blog/css/jquery.fancybox.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap-datepicker.css' %}">
+
+    <link rel="stylesheet" href="{% static 'blog/fonts/flaticon/font/flaticon.css' %}">
+
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+</head>
+<body>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-3 mt-4">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in posts %}
+                        <tr>
+                            <td>{{ post.id }}</td>
+                            <td>{{ post.title }}</td>
+                            <td>
+                                <form action="{% url 'blog:update' post.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="submit btn btn-primary">Update</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{% url 'blog:delete' post.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="submit btn btn-primary">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'blog/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'blog/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'blog/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'blog/js/popper.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'blog/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'blog/js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'blog/js/jquery.sticky.js' %}"></script>
+
+</body>
+</html>
