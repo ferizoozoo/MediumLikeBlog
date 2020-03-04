@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import *
 from .models import *
 from .forms import *
 
@@ -25,6 +25,7 @@ class BlogSingleView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(pk = self.kwargs['pk'])
+        context['last_post'] = Post.objects.latest()
         return context
 
     # TODO: Comment posting needs to be corrected.
@@ -40,7 +41,10 @@ class BlogSingleView(DetailView):
         return HttpResponseRedirect(reverse('login'))    
 
 class ContactView(TemplateView):
-    pass
+    template_name = 'blog/contact.html'
 
 class AboutView(TemplateView):
+    template_name = 'blog/about.html'
+
+class SubscribeView(CreateView):
     pass

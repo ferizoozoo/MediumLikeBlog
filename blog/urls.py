@@ -8,5 +8,6 @@ urlpatterns = [
     path('<int:pk>/', BlogSingleView.as_view(), name='blog_single'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('about/', AboutView.as_view(), name='about'),
+    path('subscribe/', SubscribeView.as_view(), name='subscribe'),
     path('user/', include('blog.user_post_interactions.urls'))
 ]

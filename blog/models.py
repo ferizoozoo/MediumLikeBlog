@@ -11,6 +11,9 @@ class Post(models.Model):
     content = models.TextField()
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
+
+    class Meta:
+        get_latest_by = ['created_at']
     
 
 class Comment(models.Model):
