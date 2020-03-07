@@ -23,11 +23,11 @@ class IndexPage(ListView, LoginRequiredMixin):
 
 class PostDelete(DeleteView, LoginRequiredMixin):
     model = Post
-    success_url = reverse_lazy('blog:index-user')
+    success_url = reverse_lazy('blog:manage')
 
 class PostUpdate(UpdateView, LoginRequiredMixin):
     model = Post
     context_object_name = 'post'
     template_name = 'user/post.html'
-    success_url = reverse_lazy('blog:index-user')
+    success_url = reverse_lazy('blog:manage')
     fields = ['title', 'content']

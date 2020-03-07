@@ -10,6 +10,7 @@ class IndexView(ListView):
     template_name = 'blog/index.html'
     context_object_name = 'blog_posts'
     queryset = Post.objects.all()[::-1]
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

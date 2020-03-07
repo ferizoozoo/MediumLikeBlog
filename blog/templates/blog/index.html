@@ -105,9 +105,15 @@
                 <li>
                   <a href="{% url 'login' %}" class="nav-link text-left">Login</a>
                 </li>
+                <li>
+                  <a href="{% url 'signup' %}" class="nav-link text-left">Signup</a>
+                </li>
                 {% else %}
                 <li>
                   <a href="{% url 'logout' %}" class="nav-link text-left">Logout</a>
+                </li>
+                <li>
+                  <a href="{% url 'blog:manage' %}" class="nav-link text-left">Manage</a>
                 </li>
                 {% endif %}
               </ul>                                                                                                                                                                                                                                                                                         
@@ -133,7 +139,7 @@
               <div class="contents">
                 <span class="caption">Editor's Pick</span>
                 <h2><a href="{% url 'blog:blog_single' post.id %}">{{ post.title }}</a></h2>
-                <p class="mb-3">{{ post.content }}</p>
+                <p class="mb-3">{{ post.content|truncatewords:20 }}</p>
                 
                 <div class="post-meta">
                   <span class="d-block"><a href="#">{{ post.user_id.username }}</a></span>
@@ -163,7 +169,7 @@
               <div class="thumbnail order-md-2" style="background-image: url({% static 'blog/images/big_img_1.jpg' %})"></div>
               <div class="contents order-md-1 pl-0">
                 <h2><a href="{% url 'blog:blog_single' post.id %}">{{ post.title }}</a></h2>
-                <p class="mb-3">{{ post.content }}</p>
+                <p class="mb-3">{{ post.content|truncatewords:10 }}</p>
                 <div class="post-meta">
                   <span class="d-block"><a href="#">{{ post.user_id.username }}</a> in <a href="#">News</a></span>
                   <span class="date-read">{{ post.created_at }}<span class="mx-1">&bullet;</span></span>
@@ -179,7 +185,7 @@
             {% for post in blog_posts %}
             <div class="trend-entry d-flex">
               <div class="trend-contents">
-                <h2><a href="{% url 'blog:blog_single' post.id %}">{{ post.content }}</a></h2>
+                <h2><a href="{% url 'blog:blog_single' post.id %}">{{ post.title }}</a></h2>
                 <div class="post-meta">
                   <span class="d-block"><a href="#">{{ post.user_id.username }}</a></span>
                   <span class="date-read">{{ post.created_at }}<span class="mx-1">&bullet;</span></span>
