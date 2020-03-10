@@ -36,6 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% if user.is_superuser or user.is_staff %}
                         {% for post in posts %}
                         <tr>
                             <td>{{ post.id }}</td>
@@ -54,6 +55,28 @@
                             </td>
                         </tr>
                         {% endfor %}
+                        {% else %}
+                        {% for post in posts %}
+                        {% if user.id == post.user_id.id %}
+                        <tr>
+                            <td>{{ post.id }}</td>
+                            <td>{{ post.title }}</td>
+                            <td>
+                                <form action="{% url 'blog:update' post.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="submit btn btn-primary">Update</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{% url 'blog:delete' post.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="submit btn btn-primary">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
                     </tbody>
                 </table>
                 <br>
