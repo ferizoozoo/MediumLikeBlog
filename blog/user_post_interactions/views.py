@@ -3,13 +3,14 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from ..models import *
+from ..forms import *
 
 # Views for the user interactions with the posts.
 class PostCreate(CreateView, LoginRequiredMixin):
     model = Post
+    form_class = PartialPostForm
     template_name = 'user/post.html'
     success_url = '/blog'
-    fields = ['title', 'content']
 
     def form_valid(self, form):
         form.instance.user_id = self.request.user
@@ -27,7 +28,7 @@ class PostDelete(DeleteView, LoginRequiredMixin):
 
 class PostUpdate(UpdateView, LoginRequiredMixin):
     model = Post
+    form_class = PartialPostForm
     context_object_name = 'post'
     template_name = 'user/post.html'
     success_url = reverse_lazy('blog:manage')
-    fields = ['title', 'content']

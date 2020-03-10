@@ -43,11 +43,13 @@
 				<div class="wrap-input100 validate-input" data-validate="Please enter the Title of the post">
 					<input class="input100" type="text" name="title" placeholder="{{ post.title|default_if_none:"Title" }}">
 					<span class="focus-input100"></span>
+					{{ form.title.errors }}
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Please enter your content">
 					<textarea class="input100" name="content" placeholder="{{ post.content|default_if_none:"Content" }}"></textarea>
 					<span class="focus-input100"></span>
+					{{ form.content.errors }}
 				</div>
 
 				<div class="container-contact100-form-btn">
