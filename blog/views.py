@@ -14,8 +14,7 @@ class IndexView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        ## TODO: get context for carousel posts but definitely needs to be changed!
-        context['carousel_posts'] = Post.objects.all()
+        context['carousel_posts'] = Post.objects.order_by('id')[:3]
         return context
 
 class BlogSingleView(DetailView):
