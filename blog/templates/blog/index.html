@@ -115,6 +115,11 @@
                 <li>
                   <a href="{% url 'blog:manage' %}" class="nav-link text-left">Manage</a>
                 </li>
+                {% if user.is_superuser %}
+                  <li>
+                    <a href="{% url 'admin:index' %}" class="nav-link text-left">Admin</a>
+                  </li>
+                {% endif %}
                 {% endif %}
               </ul>                                                                                                                                                                                                                                                                                         
             </nav>
@@ -171,7 +176,7 @@
                 <h2><a href="{% url 'blog:blog_single' post.id %}">{{ post.title }}</a></h2>
                 <p class="mb-3">{{ post.content|truncatewords:10 }}</p>
                 <div class="post-meta">
-                  <span class="d-block"><a href="#">{{ post.user_id.username }}</a> in <a href="#">News</a></span>
+                  <span class="d-block"><a href="#">{{ post.user_id.username }}</a></span>
                   <span class="date-read">{{ post.created_at }}<span class="mx-1">&bullet;</span></span>
                 </div>
               </div>
