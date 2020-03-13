@@ -207,10 +207,14 @@
         <div class="row">
           <div class="col-lg-6">
             <ul class="custom-pagination list-unstyled">
-              <li><a href="#">1</a></li>
-              <li class="active">2</li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
+              {% if page_obj.has_previous %}
+              <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+              {% endif %}
+              <li><a class="active">{{ page_obj.number }}</a></li>
+              {% if page_obj.has_next %}
+              <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+              {% endif %}
+              
             </ul>
           </div>
         </div>
