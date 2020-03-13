@@ -139,3 +139,8 @@ STATIC_URL = '/static/'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/blog'
+
+# Email backend for sending email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_URL = "http://127.0.0.1:8000"
