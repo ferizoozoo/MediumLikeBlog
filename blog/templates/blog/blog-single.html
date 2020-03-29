@@ -219,12 +219,12 @@
 
           <div class="col-lg-3 ml-auto">
             <div class="section-title">
-              <h2>Popular Posts</h2>
+              <h2>Last Post</h2>
             </div>
             <div class="trend-entry d-flex">
               
               <div class="trend-contents">
-                <h2><a href="blog-single.html">{{ last_post.title }}</a></h2>
+                <h2><a href="{% url 'blog:blog_single' last_post.id %}">{{ last_post.title }}</a></h2>
                 <div class="post-meta">
                   <span class="d-block"><a href="#">{{ last_post.user_id.username }}</a></span>
                   <span class="date-read">{{ last_post.created_at }}<span class="mx-1">&bullet;</span></span>
