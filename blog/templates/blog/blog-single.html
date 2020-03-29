@@ -166,7 +166,7 @@
                       <h2 class="mb-5">Comments</h2>
                     </div>
                     <ul class="comment-list">
-                      {% for comment in comments %}
+                      {% for comment in blog_post.comments.all %}
                       <li class="comment">
                         <div class="vcard bio">
                           <img src="{% static 'blog/images/person_1.jpg' %}" alt="Image placeholder">

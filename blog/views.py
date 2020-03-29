@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import *
 from .models import *
 from .forms import *
+from django.urls import reverse_lazy
 
 # Create your views here.
 class IndexView(ListView):
@@ -24,11 +25,9 @@ class BlogSingleView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = Comment.objects.filter(pk = self.kwargs['pk'])
         context['last_post'] = Post.objects.latest()
         return context
 
-    # TODO: Comment posting needs to be corrected.
     def post(self, request, **kwargs):
         if User.is_authenticated:
             comment = Comment(
@@ -38,7 +37,7 @@ class BlogSingleView(DetailView):
             form = PartialCommentForm(request.POST, instance=comment)
             form.save()
             return HttpResponseRedirect(request.META['HTTP_REFERER'])
-        return HttpResponseRedirect(reverse('login'))    
+        return HttpResponseRedirect(reverse_lazy('blog:index'))    
 
 class ContactView(TemplateView):
     template_name = 'blog/contact.html'
