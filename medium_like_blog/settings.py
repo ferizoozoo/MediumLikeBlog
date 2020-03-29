@@ -137,10 +137,37 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Media files (User uploaded files)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/blog'
 
 # Email backend for sending email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Email backend settings
+
+EMAIL_HOST = env('EMAIL_HOST')
+
+EMAIL_PORT = env('EMAIL_PORT')
+
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+
+EMAIL_USE_SSL = env('EMAIL_USE_SSL')
+
+EMAIL_TIMEOUT = env('EMAIL_TIMEOUT')
+
+EMAIL_SSL_KEYFILE = env('EMAIL_SSL_KEYFILE')
+
+EMAIL_SSL_CERTFILE = env('EMAIL_SSL_CERTFILE')
+
+# Site url
 SITE_URL = "http://127.0.0.1:8000"
