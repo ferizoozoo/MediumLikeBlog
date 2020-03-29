@@ -11,6 +11,7 @@ class Post(models.Model):
     content = models.TextField()
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
+    post_image = models.ImageField(upload_to='blog_images')
 
     class Meta:
         get_latest_by = ['created_at']

@@ -140,7 +140,7 @@
         <div class="site-section">
           <div class="container">
             <div class="half-post-entry d-block d-lg-flex bg-light">
-              <div class="img-bg" style="background-image: url({% static 'blog/images/big_img_1.jpg' %})"></div>
+              <div class="img-bg" style="background-image: url({{ post.post_image.url }})"></div>
               <div class="contents">
                 <span class="caption">Editor's Pick</span>
                 <h2><a href="{% url 'blog:blog_single' post.id %}">{{ post.title }}</a></h2>
@@ -171,7 +171,7 @@
             </div>
             {% for post in blog_posts %}
             <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url({% static 'blog/images/big_img_1.jpg' %})"></div>
+              <div class="thumbnail order-md-2" style="background-image: url({{ post.post_image.url }})"></div>
               <div class="contents order-md-1 pl-0">
                 <h2><a href="{% url 'blog:blog_single' post.id %}">{{ post.title }}</a></h2>
                 <p class="mb-3">{{ post.content|truncatewords:10 }}</p>

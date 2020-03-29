@@ -16,7 +16,7 @@ class PartialCommentForm(ModelForm):
 class PartialPostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'post_image']
 
     def clean(self):
         super().clean()

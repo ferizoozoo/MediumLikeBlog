@@ -34,7 +34,7 @@
 	<div class="container-contact100">
 
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" method="POST">
+			<form class="contact100-form validate-form" method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
 				<span class="contact100-form-title">
 					Create a Post
@@ -44,6 +44,12 @@
 					<input class="input100" type="text" name="title" placeholder="{{ post.title|default_if_none:"Title" }}">
 					<span class="focus-input100"></span>
 					{{ form.title.errors }}
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Please enter the Image of the post">
+					<input class="input100" type="file" name="post_image" placeholder="{{ post.post_image|default_if_none:"Image" }}">
+					<span class="focus-input100"></span>
+					{{ form.post_image.errors }}
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Please enter your content">
