@@ -246,7 +246,8 @@
 
     <div class="site-section subscribe bg-light">
       <div class="container">
-        <form action="{% url 'blog:subscribe' %}" class="row align-items-center">
+        <form action="{% url 'blog:subscribe' %}" class="row align-items-center" method="POST">
+          {% csrf_token %}
           <div class="col-md-5 mr-auto">
             <h2>Newsletter Subscribe</h2>
             <p>For receiving the latest posts via email please subscribe :)</p>

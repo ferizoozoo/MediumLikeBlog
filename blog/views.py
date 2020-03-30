@@ -6,8 +6,7 @@ from .forms import *
 from django.urls import reverse_lazy
 
 # Create your views here.
-class IndexView(ListView):
-    
+class IndexView(ListView):   
     template_name = 'blog/index.html'
     context_object_name = 'blog_posts'
     queryset = Post.objects.all()[::-1]
@@ -45,5 +44,9 @@ class ContactView(TemplateView):
 class AboutView(TemplateView):
     template_name = 'blog/about.html'
 
-class SubscribeView(CreateView):
-    pass
+def subscribe(request):
+    if request.method == 'POST':
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])        

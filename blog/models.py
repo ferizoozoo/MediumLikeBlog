@@ -25,4 +25,6 @@ class Comment(models.Model):
     content = models.TextField()
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
-    
+
+class Subscriber(models.Model):
+    email = models.EmailField()    
