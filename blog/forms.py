@@ -25,3 +25,8 @@ class PartialPostForm(ModelForm):
             raise ValidationError('Post cannot be shorter than 10 characters.')    
         if len(data['title']) < 5 or len(data['title']) > 50:
             raise ValidationError('Post title must be between 5 and 50 characters.')
+
+class SubscriptionForm(ModelForm):
+    class Meta:
+        model = Subscriber
+        fields = ['email']
