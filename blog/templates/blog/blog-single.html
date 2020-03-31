@@ -106,7 +106,7 @@
                   <a href="{% url 'login' %}" class="nav-link text-left">Login</a>
                 </li>
                 <li>
-                  <a href="{% url 'signup' %}" class="nav-link text-left">Signup</a>
+                  <a href="{% url 'accounts:signup' %}" class="nav-link text-left">Signup</a>
                 </li>
                 {% else %}
                 <li>
@@ -146,7 +146,7 @@
                 <img src="{% static 'blog/images/person_1.jpg' %}" alt="Image" class="img-fluidid">
               </div>
               <div class="vcard">
-                <span class="d-block"><a href="#">{{ blog_post.user_id.username }}</a></span>
+                <span class="d-block"><a href="{% url 'accounts:profile' blog_post.user_id.id %}">{{ blog_post.user_id.username }}</a></span>
                 <span class="date-read">{{ blog_post.created_at }}<span class="mx-1">&bullet;</span></span>
               </div>
             </div>
@@ -234,7 +234,7 @@
 
             
             <p>
-              <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
+              <a href="{% url 'blog:index' %}" class="more">See All Posts <span class="icon-keyboard_arrow_right"></span></a>
             </p>
           </div>
 

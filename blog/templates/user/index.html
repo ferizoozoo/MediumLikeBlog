@@ -81,6 +81,7 @@
                 </table>
                 <br>
                 <a class="btn btn-primary" href="{% url 'blog:post' %}">Post Something!</a>
+                <a class="btn btn-primary" href="{% url 'accounts:profile' request.user.id %}">Profile</a>
             </div>
         </div>
     </div>
